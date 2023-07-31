@@ -16,12 +16,16 @@ export const Header = () => {
       </Text>
     </div>
   );
+
+  const date = new Date();
+  const today = new Intl.DateTimeFormat("en-US", { weekday: "long"}).format(date);
+  const dateStr = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(date);
   return (
     <header className="w-full flex flex-col">
       <div className="w-full flex flex-row justify-between items-center py-8">
         <div className="hidden md:flex flex-row gap-x-8">
-          <Details lineOne="Monday" lineTwo="June 2, 2023" />
-          <Details lineOne="Bengaluru" lineTwo="32C, Cloudy" />
+          <Details lineOne={today} lineTwo={dateStr} />
+          <Details lineOne="New Delhi" lineTwo="32C, Cloudy" />
         </div>
         <div className="flex grow flex-col items-center">
           <Brand />
@@ -47,7 +51,7 @@ export const Header = () => {
             key={href}
             href={href}
           >
-            <Text as="span" level="h6" className="font-bold">
+            <Text as="span" level="h6" className="font-bold text-gray-500 hover:text-black">
               {label}
             </Text>
           </Link>
@@ -126,7 +130,7 @@ export const NewsCard: React.FC<any> = ({
         src={img}
         className="h-full w-full object-cover "
       />
-      <div className="h-full w-full bg-gradient-to-t from-black to-[16rem]" />
+      <div className="h-full w-full bg-gradient-to-t from-black via-black via-[4rem] to-[10rem]" />
       <Link href="/" className="h-full w-full flex flex-col gap-y-4 justify-end p-4">
         <Text as="h2" className="font-bold truncate drop-shadow-lg text-white">
           {headline}
